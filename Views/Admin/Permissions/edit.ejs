@@ -1,0 +1,49 @@
+<%- include('../../Layouts/Admin_partials/_Head.ejs') %>
+
+    </head>
+
+    <body>
+        <div class="main-wrapper">
+            <%- include('../../Layouts/Admin_partials/_Topbar.ejs') %>
+                <%- include('../../Layouts/Admin_partials/_Sidebar.ejs') %>
+                    <div class="page-wrapper">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-sm-4 col-3">
+                                    <h4 class="page-title"><a href="/permissions">Permissions</a> - Update</h4>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <h4 class="card-title">Permission Info</h4>
+                                        <form action="/permission-update" method="post">
+                                            <input type="hidden" name="id" value="<%= permission.id%>">
+                                            <div class="form-group">
+                                                <labe for="name">Name</label>
+                                                    <input name="name" value="<%= permission.name%>" id="name"
+                                                        type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status">Status</label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <option value="">Please Select</option>
+                                                    <option value="1" <%=(permission.status=='1' ) ? 'selected' : '' %>
+                                                        >Active
+                                                    </option>
+                                                    <option value="0" <%=(permission.status=='0' ) ? 'selected' : '' %>
+                                                        >In-active
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('../../Layouts/Admin_partials/_FooterScript.ejs') %>

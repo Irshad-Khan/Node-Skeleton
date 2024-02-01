@@ -1,0 +1,79 @@
+<%- include('../../Layouts/Admin_partials/_Head.ejs') %>
+
+    </head>
+
+    <body>
+        <div class="main-wrapper">
+            <%- include('../../Layouts/Admin_partials/_Topbar.ejs') %>
+                <%- include('../../Layouts/Admin_partials/_Sidebar.ejs') %>
+                    <div class="page-wrapper">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-sm-4 col-3">
+                                    <h4 class="page-title"><a href="/users">Users</a> - Create</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <h4 class="card-title">User Info</h4>
+                                        <form action="/user-store" method="post">
+                                            <div class="form-group">
+                                                <labe for="first_name">First Name</label>
+                                                    <input name="first_name" id="first_name" type="text"
+                                                        class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="last_name">Last Name</label>
+                                                    <input name="last_name" id="last_name" type="text"
+                                                        class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="email">Email</label>
+                                                    <input name="email" id="email" type="email" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="password">Password</label>
+                                                    <input name="password" id="password" type="password"
+                                                        class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="phone">Phone</label>
+                                                    <input name="phone" id="phone" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="dob">Date of Birth</label>
+                                                    <input name="dob" id="dob" type="date" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="address">Address</label>
+                                                    <textarea class="form-control" name="address" id="address" cols="30"
+                                                        rows="5"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="gender">Gender</label>
+                                                <select name="gender" id="gender" class="form-control">
+                                                    <option value="">Please Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status">Status</label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <option value="">Please Select</option>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">In-active</option>
+                                                </select>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('../../Layouts/Admin_partials/_FooterScript.ejs') %>
