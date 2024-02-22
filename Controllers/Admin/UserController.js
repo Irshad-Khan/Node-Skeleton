@@ -2,6 +2,7 @@ const User = require('../../Models/User');
 
 
 exports.index = (req, res, next) => {
+
     User.findAll({
         rder: [['id', 'DESC']]
     }).then((users) => {

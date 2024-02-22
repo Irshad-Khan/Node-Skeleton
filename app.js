@@ -2,16 +2,19 @@ const express = require('express');
 require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const sessionConfig = require('./Config/Session');
 
 const webRoute = require('./routes/web');
+const webUnprotactedRoute = require('./routes/web_unprotected');
 const apiRoute = require('./routes/api');
 const ErrorController = require('./Controllers/Errors/ErrorController')
 const SetCurrentUrlMiddleware = require('./Middlewares/SetCurrentUrlMiddleware')
+const appSetting = require('./Middlewares/SetAppSettingMiddleware')
 const Helpers = require('./Helpers/CustomHelper')
 
 const app = express();
 app.use(SetCurrentUrlMiddleware);
+app.use(appSetting);
 app.locals.helpers = Helpers;
 
 // This use to set our view enjgne and direcetory
@@ -24,8 +27,16 @@ app.use(express.static(path.join(__dirname, 'Public')));
 // This use to get data from request in controller
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Configure session middleware
+app.use(sessionConfig());
+
+
+app.use(webUnprotactedRoute);
+
 // Register Routes
 app.use(webRoute);
+// app.use(isLoggedIn);
+
 app.use('/api', apiRoute);
 
 // If user enter wrong URL then it invoke

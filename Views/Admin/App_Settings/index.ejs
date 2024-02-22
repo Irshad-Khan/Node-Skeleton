@@ -1,0 +1,55 @@
+<%- include('../../Layouts/Admin_partials/_Head.ejs') %>
+    </head>
+
+    <body>
+        <div class="main-wrapper">
+            <%- include('../../Layouts/Admin_partials/_Topbar.ejs') %>
+                <%- include('../../Layouts/Admin_partials/_Sidebar.ejs') %>
+                    <div class="page-wrapper">
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-sm-4 col-3">
+                                    <h4 class="page-title"><a href="/dashboard">Dashboard</a> - App Settings</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <div style="text-align: center;">
+                                            <img style="max-width: 100%" src="/assets/img/app-default-logo.png" alt=""
+                                                width="150">
+                                        </div>
+                                        <form action="/app-settings/update" method="post">
+                                            <input type="hidden" name="id" id="id" value="<%= appSettings?.id %>">
+                                            <div class="form-group">
+                                                <labe for="name">App Name</label>
+                                                    <input name="name" id="name" type="text" class="form-control"
+                                                        value="<%= appSettings?.name %>">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="email">App Email</label>
+                                                    <input name="email" value="<%= appSettings?.email %>" id="email"
+                                                        type="email" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="address">App Address</label>
+                                                    <textarea class="form-control" name="address" id="address" cols="30"
+                                                        rows="5"><%= appSettings?.address %></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <labe for="logo">App Logo</label>
+                                                    <input name="logo" id="logo" type="file" class="form-control">
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        </div>
+        <%- include('../../Layouts/Admin_partials/_FooterScript.ejs') %>
+    </body>

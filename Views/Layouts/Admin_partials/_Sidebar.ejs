@@ -19,12 +19,12 @@
                 <li>
                     <a href=""><i class="fa fa-calendar-check-o"></i> <span>Activities</span></a>
                 </li>
-                <li>
-                    <a href=""><i class="fa fa-cog"></i>
+                <li class="<%= helpers.getActiveClass(currentUrl,['app-settings'])%>">
+                    <a href="/app-settings"><i class="fa fa-cog"></i>
                         <span>Settings</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-hospital-o"></i>
+                    <a href="/logout"><i class="fa fa-hospital-o"></i>
                         <span>Logout</span></a>
                 </li>
                 <!-- <li class="submenu">

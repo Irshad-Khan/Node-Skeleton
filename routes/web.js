@@ -1,14 +1,19 @@
 const express = require('express');
+const { isLoggedIn } = require('../Middlewares/AuthMiddleware')
 
 const LoginController = require('../Controllers/Auth/LoginController');
 const DashboardController = require('../Controllers/Admin/DashboardController');
 const RoleController = require('../Controllers/Admin/RoleController');
 const PermissionController = require('../Controllers/Admin/PermissionController');
 const UserController = require('../Controllers/Admin/UserController');
+const AppSettingController = require('../Controllers/Admin/AppSettingController');
 const Route = express.Router();
 
-Route.get('/', LoginController.showLoginForm);
-Route.get('/register', LoginController.showRegistrationForm);
+Route.use(isLoggedIn);
+
+
+Route.get('/logout', LoginController.logout);
+
 
 Route.get('/dashboard', DashboardController.index);
 
@@ -33,6 +38,10 @@ Route.post('/user-delete', UserController.delete);
 Route.get('/user-edit/:id', UserController.edit);
 Route.post('/user-update', UserController.update);
 Route.get('/user-detail/:id', UserController.profile);
+
+
+Route.get('/app-settings', AppSettingController.index);
+Route.post('/app-settings/update', AppSettingController.update);
 
 
 module.exports = Route;
